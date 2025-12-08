@@ -12,7 +12,7 @@ namespace AM.Application.Core.Domain
         public int capacity { get; set; }
         public DateTime ManufactureDate { get; set; }
 
-        public int planceid { get; set; }
+        public int planeid { get; set; }
 
         public PlaneType planetype { get; set; }
 
@@ -20,7 +20,7 @@ namespace AM.Application.Core.Domain
 
         public override string ToString()
         {
-            return "Plane n°: " + this.planceid + " Capacity°: " + this.capacity;
+            return "Plane n°: " + this.planeid + " Capacity°: " + this.capacity;
             //return base.ToString();
         }
 

@@ -8,7 +8,7 @@ Plane p = new Plane();
 p.capacity = 200;
 p.ManufactureDate = new DateTime(2025, 11, 12);
 p.planetype = PlaneType.Airbus;
-p.planceid = 1;
+p.planeid = 1;
 Console.WriteLine(p.ToString());
 
 
@@ -46,4 +46,27 @@ Console.WriteLine("---------------------------");
 trav.PassengerType();
 
 FlightMethods fm=new FlightMethods {flights=TestData.listFlights};
+foreach (var iteam in fm.getFlightDates("Paris"))
+{
+        Console.WriteLine(iteam);
+}
+fm.getFlights("destination", "Paris");
+Console.WriteLine("La moyenne est "+fm.DurationAverage("Paris"));
 
+foreach(var item in fm.SeniorTravellers(TestData.flight1))
+{
+    Console.WriteLine(item.ToString()+" AGE "+ (DateTime.Now.Year-item.birthDate.Year));
+}
+var groupedFlights = fm.DestinationGroupedFlights();
+
+foreach (var group in groupedFlights)
+{
+    Console.WriteLine($"Destination : {group.Key}");
+    foreach (var flight in group)
+    {
+        // Afficher la date de décollage
+        Console.WriteLine($"Décollage : {flight.flightDate:dd/MM/yyyy HH:mm:ss}");
+    }
+    Console.WriteLine(); // Ligne vide entre les destinations
+}
+p2.UpperFullName();
