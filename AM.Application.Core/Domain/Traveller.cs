@@ -14,7 +14,7 @@ namespace AM.Application.Core.Domain
 
         public override string ToString()
         {
-            return "id " + this.id + " nationality is " + this.nationality;
+            return "id " + this.passportName + " nationality is " + this.nationality;
         }
         public override void PassengerType()
         {

@@ -4,6 +4,7 @@ using AM.infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AM.infrastructure.Migrations
 {
     [DbContext(typeof(AMContext))]
-    partial class AMContextModelSnapshot : ModelSnapshot
+    [Migration("20251209101206_ajout_airline")]
+    partial class ajout_airline
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,9 +34,7 @@ namespace AM.infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("flightId"));
 
                     b.Property<string>("airline")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("airlinelogo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("departure")
@@ -64,11 +65,11 @@ namespace AM.infrastructure.Migrations
 
             modelBuilder.Entity("AM.Application.Core.Domain.Passenger", b =>
                 {
-                    b.Property<int>("passportName")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("passportName"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
@@ -85,13 +86,15 @@ namespace AM.infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("lastname")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("passportName")
+                        .HasColumnType("int");
 
                     b.Property<string>("phoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("passportName");
+                    b.HasKey("id");
 
                     b.ToTable("passengers");
 
@@ -127,12 +130,12 @@ namespace AM.infrastructure.Migrations
                     b.Property<int>("flightsflightId")
                         .HasColumnType("int");
 
-                    b.Property<int>("passengerspassportName")
+                    b.Property<int>("passengersid")
                         .HasColumnType("int");
 
-                    b.HasKey("flightsflightId", "passengerspassportName");
+                    b.HasKey("flightsflightId", "passengersid");
 
-                    b.HasIndex("passengerspassportName");
+                    b.HasIndex("passengersid");
 
                     b.ToTable("FlightPassenger");
                 });
@@ -189,7 +192,7 @@ namespace AM.infrastructure.Migrations
 
                     b.HasOne("AM.Application.Core.Domain.Passenger", null)
                         .WithMany()
-                        .HasForeignKey("passengerspassportName")
+                        .HasForeignKey("passengersid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

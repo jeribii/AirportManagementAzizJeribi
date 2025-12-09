@@ -41,7 +41,7 @@ namespace AM.ApplicationCore.Domain
             passengers = new List<Passenger> { captain, hostess1, hostess2, traveller1, traveller2, traveller3, traveller4, traveller5 },
             plane = Airbusplane
         };
-        public static Flight flight2 = new Flight { flightDate = new DateTime(2022, 02, 01, 21, 10, 10), destination = "Paris", effectiveArrival = new DateTime(2022, 02, 01, 23, 10, 10), estimateDuration = 105, plane = BoingPlane };
+        public static Flight flight2 = new Flight { flightDate = new DateTime(2022, 02, 01, 21, 10, 10),departure="Tounes", destination = "Paris", effectiveArrival = new DateTime(2022, 02, 01, 23, 10, 10), estimateDuration = 105, plane = BoingPlane };
         public static Flight flight3 = new Flight { flightDate = new DateTime(2022, 03, 01, 5, 10, 10), destination = "Paris", effectiveArrival = new DateTime(2022, 03, 01, 6, 40, 10), estimateDuration = 100, plane = BoingPlane };
         public static Flight flight4 = new Flight { flightDate = new DateTime(2022, 04, 01, 6, 10, 10), destination = "Madrid", effectiveArrival = new DateTime(2022, 04, 01, 8, 10, 10), estimateDuration = 130, plane = BoingPlane };
         public static Flight flight5 = new Flight { flightDate = new DateTime(2022, 05, 01, 17, 10, 10), destination = "Madrid", effectiveArrival = new DateTime(2022, 05, 01, 18, 50, 10), estimateDuration = 105, plane = BoingPlane };

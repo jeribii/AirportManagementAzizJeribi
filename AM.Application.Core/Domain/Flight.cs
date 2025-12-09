@@ -8,7 +8,9 @@ namespace AM.Application.Core.Domain
 {
     public class Flight
     {
-        public string departure { get; set; }
+        public string? airlinelogo {  get; set; }
+        public string? airline { get; set; }
+        public string? departure { get; set; }
 
         public string destination { get; set; }
 
@@ -20,6 +22,7 @@ namespace AM.Application.Core.Domain
 
         public int flightId { get; set; }
 
+        
         public Plane plane { get; set; }
 
         public override string ToString()
